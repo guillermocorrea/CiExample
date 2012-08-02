@@ -2,7 +2,7 @@
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
  
 	<!--******************-->
-	<!-- Build Properties  -->
+	<!-- Build Properties -->
 	<!--******************-->
  
   <PropertyGroup>
@@ -30,7 +30,7 @@
 		<!-- The tools path for NUnit -->
     	<NUnitPath>$(ToolsBasePath)\NUnit.2.6.0.12054\lib</NUnitPath>
 		<!-- NUnit report name and location -->
-		<NUnitOuputFile>$(ReportsPath)\tests-output.xml</NUnitOuputFile>
+		<NUnitOuputFile>$(ReportsPath)\nunit-output.xml</NUnitOuputFile>
 		
 		<!-- StyleCop -->
 		<!-- The tools path for StyleCop -->
@@ -50,7 +50,7 @@
 		<!-- The StyleCop report name and location -->
 		<StyleCopOutputFile>$(ReportsPath)\stylecop-output.xml</StyleCopOutputFile>
 		<!-- The StyleCop max violations count -->
-		<StyleCopMaxViolationCount>50</StyleCopMaxViolationCount>
+		<StyleCopMaxViolationCount>999</StyleCopMaxViolationCount>
 		<!-- StyleCop Force Full Analysis -->
 		<StyleCopForceFullAnalysis>true</StyleCopForceFullAnalysis>
 		<!-- StyleCop Treat Errors As Warnings -->
@@ -68,10 +68,11 @@
 		<!-- OpenCover -->
 		<!-- The tools path for OpenCover -->
 		<OpenCoverPath>$(ToolsBasePath)\OpenCover.4.0.519</OpenCoverPath>
-		<OpenCoverReportGenPath>$(ToolsBasePath)\ReportGenerator.1.5.0.0</OpenCoverReportGenPath>
+		<ReportGeneratorPath>$(ToolsBasePath)\ReportGenerator.1.5.0.0</ReportGeneratorPath>
 		<!-- OpenCover report name and location -->
 		<OpenCoverOuputFile>$(ReportsPath)\coverage-output.xml</OpenCoverOuputFile>
 		<OpenCoverTmpOuputFile>$(ReportsPath)\coverage-tmp-output.xml</OpenCoverTmpOuputFile>
+		<OpenCoverReportPath>$(ReportsPath)\reports\cobertura</OpenCoverReportPath>
 
 
 		<!--<OpenCoverCommand>$(OpenCoverPath)\OpenCover.Console.exe -target:&quot;$(NUnitPath)\nunit-console.exe&quot; -targetargs:&quot;/noshadow @(TestAssemblies) /domain:single /xml:$(NUnitOuputFile)&quot; -filter:&quot;-[$(MSBuildProjectName)*.Tests]* +[$(MSBuildProjectName)*]$(MSBuildProjectName).*&quot; -output:$(OpenCoverTmpOuputFile)</OpenCoverCommand>-->
@@ -80,7 +81,13 @@
 		<!-- Doxygen -->
 		<DoxygenExePath>tools\doxygen-1.8.1.2\doxygen.exe</DoxygenExePath>
 		<DoxygenConfigFile>tools\doxygen-1.8.1.2\config</DoxygenConfigFile>
-		
+
+		<!-- Simian duplication code detection tool -->
+		<SimianExeToolPath>$(ToolsBasePath)\simian-2.3.33\bin\simian-2.3.33.exe</SimianExeToolPath>
+		<SimianOutputFile>$(ReportsPath)\simian-output.xml</SimianOutputFile>
+		<SimianCommand>&quot;$(SimianExeToolPath)&quot; -formatter=xml:&quot;$(SimianOutputFile)&quot; -excludes=**/*.Test/**/*.cs -excludes=**/*.DbFrame/**/*.cs -excludes=**/*. DbLayout/**/*.cs -excludes=**/*.Designer.cs -excludes=**/XServer1_8.cs -threshold=10 **/*.cs </SimianCommand>
+
+
 		<!-- Assembly Versioning -->
 		<!-- Major -->
 		<AssemblyMajorVersion>1</AssemblyMajorVersion>
@@ -187,32 +194,31 @@
  <!-- The Code Coverage Target, checks code coverage using opencover and NUnit, the 
 			task generates both a coverage report and the test report -->
    <Target Name="CodeCoverage" DependsOnTargets="Clean;Compile">
+   <!--<Target Name="CodeCoverage">-->
 		<!-- Include all assemblies that end in Tests.dll (This is convention based) -->
     <CreateItem Include="**\Bin\Debug\*Tests*.dll" >
       <Output TaskParameter="Include" ItemName="TestAssemblies" />
     </CreateItem>
 
-    <Message Text="CodeCoverage started" />
+    <Message Text="CodeCoverage" />
 
-	<Exec Command="OpenCover.bat" ContinueOnError="false" />
+	<Exec Command="&quot;$(OpenCoverPath)\OpenCover.Console.exe&quot; -register:user -target:&quot;$(NUnitPath)\nunit-console.exe&quot; -targetargs:&quot;/noshadow @(TestAssemblies)&quot; -filter:+[*]* -output:&quot;$(OpenCoverOuputFile)&quot;" />
+
+	<Delete Files="TestResult.xml"></Delete>
+
+	<MakeDir Directories="$(OpenCoverReportPath)"/>
+
+	<Exec Command="&quot;$(ReportGeneratorPath)\ReportGenerator.exe&quot; &quot;$(OpenCoverOuputFile)&quot; &quot;$(OpenCoverReportPath)&quot;" />
 
 	<Message Text="CodeCoverage finished" />
-
-<!--<Exec Command="tools\OpenCover.4.0.519\OpenCover.Console.exe -register:user -target:tools\NUnit.2.6.0.12054\lib\nunit-console.exe -targetargs:&quot;/noshadow src\CiExample.Tests\bin\Debug\CiExample.Tests.dll&quot; -filter:+[*]* -output:artifacts\opencover-nunit-anycpu.xml" />-->
-<!--<Exec Command="&quot;C:\Users\EXTIGLGCORREAG\Documents\Visual Studio 2010\Projects\CiExample\tools\OpenCover.4.0.519\OpenCover.Console.exe&quot; -register:user -target:&quot;C:\Users\EXTIGLGCORREAG\Documents\Visual Studio 2010\Projects\CiExample\tools\NUnit.2.6.0.12054\lib\nunit-console.exe&quot; -targetargs:&quot;/noshadow src\CiExample.Tests\bin\Debug\CiExample.Tests.dll /domain:single /xml:&quot;C:\Users\EXTIGLGCORREAG\Documents\Visual Studio 2010\Projects\CiExample\artifacts\tests-output.xml&quot; -filter:&quot;-[CiExample.Tests]* +[Negocio*]Negocio.*&quot; -output:&quot;artifacts\coverage-tmp-output.xml&quot;" />-->
-
-<!--<Exec Command="&quot;$(OpenCoverPath)\OpenCover.Console.exe&quot; -register:user -target:&quot;$(NUnitPath)\nunit-console.exe&quot; -targetargs:&quot;/noshadow src\CiExample.Tests\bin\Debug\CiExample.Tests.dll /domain:single /xml:&quot;$(NUnitOuputFile)&quot; -output:&quot;$(OpenCoverTmpOuputFile)&quot;" />-->
-
-<!--<Exec Command="&quot;$(OpenCoverPath)\OpenCover.Console.exe&quot; -register:user -target:&quot;$(NUnitPath)\nunit-console.exe&quot; -targetargs:&quot;/noshadow @(TestAssemblies) /domain:single /xml:&quot;$(NUnitOuputFile)&quot; -filter:&quot;-[$(MSBuildProjectName)*.Tests]* +[$(MSBuildProjectName)*]$(MSBuildProjectName).*&quot; -output:&quot;$(OpenCoverTmpOuputFile)&quot;" />-->
-
-
-  <!--  <Exec Command="&quot;$(OpenCoverReportGenPath)\ReportGenerator.exe&quot; &quot;$(OpenCoverTmpOuputFile)&quot; &quot;$(ReportsPath)&quot; XmlSummary" /> -->
-		<!-- Report Generator has no way to name the output file so rename it by copying and deleting the original file -->
-		<!-- <Copy SourceFiles="$(ReportsPath)\Summary.xml" DestinationFiles="$(OpenCoverOuputFile)"></Copy> 
-		<Delete Files="$(ReportsPath)\Summary.xml"></Delete>-->
-		<!-- Delete the original opencover output before it was transformed by ReportGenerator -->
-    <!--<Delete Files="$(OpenCoverTmpOuputFile)" />-->
 		
+  </Target>
+
+  <!-- The CodeDuplicated Target, runs simian code duplication detection tool-->
+  <Target Name="CodeDuplicated">
+  	<!-- tools\simian-2.3.33\bin\simian-2.3.33.exe -formatter=xml:artifacts\Simian.Result.xml -excludes=**/*.Test/**/*.cs -excludes=**/*.DbFrame/**/*.cs -excludes=**/*. DbLayout/**/*.cs -excludes=**/*.Designer.cs -excludes=**/XServer1_8.cs -threshold=10 **/*.cs  -->
+  	<Message Text="$(SimianCommand)" />
+  	<Exec IgnoreExitCode="true" Command="$(SimianCommand)" />
   </Target>
 	
  <!-- The Specs Target, runs the context specifications on the compiled source code via MSpec -->
@@ -234,14 +240,14 @@
  <!-- The default build task that pulls the other tasks together -->
 	<!--<Target Name="Build" DependsOnTargets="Clean;CodeQuality;Compile;Test;Specs">
 	</Target>-->
-	<Target Name="Build" DependsOnTargets="Clean;CodeQuality;Compile;ApiDoc;CodeCoverage">
+	<Target Name="Build" DependsOnTargets="Clean;CodeQuality;Compile">
 	</Target>
 	
  <!-- The CI build task that pulls the other tasks together and includes assembly labelling that pulls in the CI servers build number -->
-	<Target Name="CI" DependsOnTargets="Clean;CodeQuality;Label;Compile;Tests;Specs">
+	<Target Name="CI" DependsOnTargets="Clean;CodeQuality;Label;Compile;Tests">
 	</Target>	
 	
  <!-- The CI build task that pulls the other tasks together, tests are run including codecoverage and includes assembly labelling that pulls in the CI servers build number -->
-	<Target Name="CICoverage" DependsOnTargets="Clean;CodeQuality;Compile;CodeCoverage">
+	<Target Name="CICoverage" DependsOnTargets="Clean;CodeQuality;Compile;ApiDoc;CodeCoverage;CodeDuplicated">
 	</Target>		
 </Project>
