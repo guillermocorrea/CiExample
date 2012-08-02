@@ -30,7 +30,7 @@
 		<!-- The tools path for NUnit -->
     	<NUnitPath>$(ToolsBasePath)\NUnit.2.6.0.12054\lib</NUnitPath>
 		<!-- NUnit report name and location -->
-		<NUnitOuputFile>$(ReportsPath)\nunit-output.xml</NUnitOuputFile>
+		<NUnitOuputFile>nunit-output.xml</NUnitOuputFile>
 		
 		<!-- StyleCop -->
 		<!-- The tools path for StyleCop -->
@@ -48,7 +48,7 @@
 
 		<!--<StyleCopPath>$(ToolsBasePath)\StyleCop.4.7.33.0</StyleCopPath>-->
 		<!-- The StyleCop report name and location -->
-		<StyleCopOutputFile>$(ReportsPath)\stylecop-output.xml</StyleCopOutputFile>
+		<StyleCopOutputFile>stylecop-output.xml</StyleCopOutputFile>
 		<!-- The StyleCop max violations count -->
 		<StyleCopMaxViolationCount>999</StyleCopMaxViolationCount>
 		<!-- StyleCop Force Full Analysis -->
@@ -70,8 +70,8 @@
 		<OpenCoverPath>$(ToolsBasePath)\OpenCover.4.0.519</OpenCoverPath>
 		<ReportGeneratorPath>$(ToolsBasePath)\ReportGenerator.1.5.0.0</ReportGeneratorPath>
 		<!-- OpenCover report name and location -->
-		<OpenCoverOuputFile>$(ReportsPath)\coverage-output.xml</OpenCoverOuputFile>
-		<OpenCoverTmpOuputFile>$(ReportsPath)\coverage-tmp-output.xml</OpenCoverTmpOuputFile>
+		<OpenCoverOuputFile>coverage-output.xml</OpenCoverOuputFile>
+		<OpenCoverTmpOuputFile>coverage-tmp-output.xml</OpenCoverTmpOuputFile>
 		<OpenCoverReportPath>$(ReportsPath)\reports\cobertura</OpenCoverReportPath>
 
 
@@ -84,7 +84,7 @@
 
 		<!-- Simian duplication code detection tool -->
 		<SimianExeToolPath>$(ToolsBasePath)\simian-2.3.33\bin\simian-2.3.33.exe</SimianExeToolPath>
-		<SimianOutputFile>$(ReportsPath)\simian-output.xml</SimianOutputFile>
+		<SimianOutputFile>simian-output.xml</SimianOutputFile>
 		<SimianCommand>&quot;$(SimianExeToolPath)&quot; -formatter=xml:&quot;$(SimianOutputFile)&quot; -excludes=**/*.Test/**/*.cs -excludes=**/*.DbFrame/**/*.cs -excludes=**/*. DbLayout/**/*.cs -excludes=**/*.Designer.cs -excludes=**/XServer1_8.cs -threshold=10 **/*.cs </SimianCommand>
 
 
