@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageSession xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Modules>
+    <Module skippedDueTo="Filter" hash="F1-43-C4-C5-57-F3-24-86-8F-BB-AA-8C-6C-CB-BA-6E-6D-70-53-AC">
+      <FullName>C:\Windows\assembly\GAC_32\mscorlib\2.0.0.0__b77a5c561934e089\mscorlib.dll</FullName>
+      <ModuleName>mscorlib</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="F9-04-A8-31-CD-FB-23-72-95-63-5D-14-9A-A0-66-8E-7F-44-93-7A">
+      <FullName>C:\Windows\assembly\GAC_32\mscorlib\2.0.0.0__b77a5c561934e089\sorttbls.nlp</FullName>
+      <ModuleName>mscorlib</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="99-58-F3-12-57-52-7D-B7-C5-D5-6D-D2-6F-7E-6A-41-D6-EA-E3-3A">
+      <FullName>C:\Users\EXTIGLGCORREAG\Documents\Visual Studio 2010\Projects\CiExample\tools\NUnit.2.6.0.12054\lib\nunit-console.exe</FullName>
+      <ModuleName>nunit-console</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="6E-30-2E-50-36-FB-60-2C-8E-50-C0-83-54-8B-CC-EA-A8-91-B6-CC">
+      <FullName>C:\Windows\assembly\GAC_32\mscorlib\2.0.0.0__b77a5c561934e089\sortkey.nlp</FullName>
+      <ModuleName>mscorlib</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="44-96-43-B5-E5-39-0E-45-A3-FD-E1-E7-5A-9C-F7-6A-15-9A-16-18">
+      <FullName>C:\Users\EXTIGLGCORREAG\Documents\Visual Studio 2010\Projects\CiExample\tools\NUnit.2.6.0.12054\lib\lib\nunit-console-runner.dll</FullName>
+      <ModuleName>nunit-console-runner</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="7A-99-4B-0E-30-AA-4A-64-F6-D0-5F-F1-41-D9-04-6D-56-99-A6-79">
+      <FullName>C:\Users\EXTIGLGCORREAG\Documents\Visual Studio 2010\Projects\CiExample\tools\NUnit.2.6.0.12054\lib\lib\nunit.core.dll</FullName>
+      <ModuleName>nunit.core</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="C6-A4-C6-84-EB-84-41-C4-A9-30-69-92-57-02-1A-EE-1A-09-C1-61">
+      <FullName>C:\Users\EXTIGLGCORREAG\Documents\Visual Studio 2010\Projects\CiExample\tools\NUnit.2.6.0.12054\lib\lib\nunit.util.dll</FullName>
+      <ModuleName>nunit.util</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="72-C7-03-3D-46-8A-09-61-49-D7-41-77-D2-AB-3C-B0-58-18-E6-A9">
+      <FullName>C:\Users\EXTIGLGCORREAG\Documents\Visual Studio 2010\Projects\CiExample\tools\NUnit.2.6.0.12054\lib\lib\nunit.core.interfaces.dll</FullName>
+      <ModuleName>nunit.core.interfaces</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="29-7F-1D-47-A0-C2-1E-79-72-DB-55-8B-77-17-5A-36-3F-AB-C9-49">
+      <FullName>C:\Windows\assembly\GAC_MSIL\System.Configuration\2.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll</FullName>
+      <ModuleName>System.Configuration</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="33-04-0E-59-E2-77-FC-1E-CA-38-A2-6E-34-56-5B-28-42-34-60-10">
+      <FullName>C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll</FullName>
+      <ModuleName>System</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="9F-38-A5-E1-C0-92-04-A9-56-32-B4-1B-B5-9F-34-1D-C5-C9-28-43">
+      <FullName>C:\Windows\assembly\GAC_MSIL\System.Xml\2.0.0.0__b77a5c561934e089\System.Xml.dll</FullName>
+      <ModuleName>System.Xml</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="92-44-10-37-4C-84-2D-65-E3-A0-6A-B9-9F-01-42-6A-27-41-4A-8C">
+      <FullName>C:\Windows\assembly\GAC_MSIL\System.Runtime.Remoting\2.0.0.0__b77a5c561934e089\System.Runtime.Remoting.dll</FullName>
+      <ModuleName>System.Runtime.Remoting</ModuleName>
+      <Classes />
+    </Module>
+  </Modules>
+</CoverageSession>

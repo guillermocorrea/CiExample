@@ -252,6 +252,6 @@
 	</Target>	
 
 	<Target Name="Sonar">
-		<Exec Command="sonar.bat" IgnoreExitCode="true" />
+		<Exec Command="&quot;C:\sonar-runner-1.4\bin\sonar-runner.bat&quot;" IgnoreExitCode="true" />
 	</Target>			
 </Project>
