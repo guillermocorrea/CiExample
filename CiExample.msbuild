@@ -249,5 +249,9 @@
 	
  <!-- The CI build task that pulls the other tasks together, tests are run including codecoverage and includes assembly labelling that pulls in the CI servers build number -->
 	<Target Name="CICoverage" DependsOnTargets="Clean;CodeQuality;Compile;ApiDoc;CodeDuplicated;Test;CodeCoverage">
-	</Target>		
+	</Target>	
+
+	<Target Name="Sonar">
+		<Exec Command="sonar-runner" />
+	</Target>			
 </Project>
