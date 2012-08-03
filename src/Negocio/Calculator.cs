@@ -29,6 +29,14 @@ namespace Negocio
                 Console.WriteLine("Greater than 1");
         }
 
+        public void DuplicateCode3()
+        {
+            double a = 1;
+            double b = 1;
+            if (a + b > 1)
+                Console.WriteLine("Greater than 1");
+        }
+
         public void DuplicateCode2()
         {
             double a = 1;

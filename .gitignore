@@ -7,6 +7,10 @@
 .metadata
 tmp/
 artifacts/*
+nunit-output.xml
+stylecop-output.xml
+simian-output.xml
+.sonar
 *.tmp
 *.bak
 *.swp
